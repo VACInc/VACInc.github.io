@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080204">
+  <title>VAC · ClawCon</title>
+  <meta name="description" content="Connect with VAC at ClawCon.">
+  <style>
+    :root {
+      --bg: #080204;
+      --panel: rgba(22, 7, 10, 0.78);
+      --line: rgba(255, 80, 96, 0.28);
+      --text: #fff3f3;
+      --muted: #c99ba0;
+      --red: #ff3048;
+      --ember: #ffb05c;
+      --green: #4ade80;
+      --black: #050203;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 16% -10%, rgba(255,48,72,.36), transparent 32%),
+        radial-gradient(circle at 92% 8%, rgba(255,176,92,.18), transparent 29%),
+        radial-gradient(circle at 50% 105%, rgba(255,48,72,.18), transparent 34%),
+        linear-gradient(145deg, #050203 0%, #120408 48%, #080204 100%);
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .36;
+      background:
+        linear-gradient(rgba(255,48,72,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,48,72,.08) 1px, transparent 1px),
+        repeating-linear-gradient(0deg, transparent 0 6px, rgba(255,255,255,.018) 6px 7px);
+      background-size: 54px 54px, 54px 54px, auto;
+      mask-image: radial-gradient(circle at top, black, transparent 78%);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      opacity: .12;
+      background: conic-gradient(from 170deg at 50% 50%, transparent, var(--red), transparent, var(--ember), transparent);
+      filter: blur(48px);
+      animation: drift 18s linear infinite;
+    }
+    @keyframes drift { to { transform: rotate(1turn); } }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(560px, 100%);
+    }
+    .shell {
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.05), transparent 28%),
+        rgba(8, 2, 4, .58);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.55),
+        inset 0 0 0 1px rgba(255,255,255,.035),
+        0 0 80px rgba(255,48,72,.10);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .topline {
+      height: 5px;
+      background: linear-gradient(90deg, transparent, var(--red), var(--ember), var(--red), transparent);
+      box-shadow: 0 0 28px rgba(255,48,72,.72);
+    }
+    .card { padding: clamp(22px, 5vw, 34px); }
+    .hero {
+      position: relative;
+      padding: clamp(22px, 5vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(120deg, rgba(255,48,72,.18), transparent 38%),
+        radial-gradient(circle at 88% 20%, rgba(255,176,92,.16), transparent 32%),
+        rgba(22, 7, 10, .76);
+      box-shadow: inset 0 0 52px rgba(255,48,72,.05), 0 20px 70px rgba(0,0,0,.38);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "VAC";
+      position: absolute;
+      right: -8px;
+      bottom: -34px;
+      font-size: clamp(100px, 28vw, 178px);
+      font-weight: 950;
+      letter-spacing: -.11em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.06);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ember);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(74,222,128,.75);
+    }
+    h1 {
+      margin: 12px 0 0;
+      font-size: clamp(52px, 14vw, 86px);
+      line-height: .86;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+      text-shadow: 0 0 34px rgba(255,48,72,.20);
+    }
+    .sub {
+      position: relative;
+      max-width: 390px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: clamp(15px, 3.8vw, 18px);
+      line-height: 1.45;
+    }
+    .links {
+      display: grid;
+      gap: 11px;
+      margin-top: 16px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 950;
+      background: rgba(5,2,3,.48);
+      box-shadow: inset 0 0 24px rgba(255,48,72,.035);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .link:hover, .link:focus-visible {
+      transform: translateX(3px);
+      border-color: rgba(255,176,92,.52);
+      background: rgba(255,48,72,.10);
+      outline: none;
+    }
+    .label { display: grid; gap: 2px; min-width: 0; }
+    .name { font-size: 16px; }
+    .handle {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .arrow {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .qr-card {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(5,2,3,.42);
+      box-shadow: inset 0 0 24px rgba(255,48,72,.03);
+    }
+    .qr-card img {
+      width: 92px;
+      height: 92px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 7px;
+    }
+    .qr-title {
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
+      color: var(--ember);
+    }
+    .qr-text { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: center;
+    }
+    @media (max-width: 420px) {
+      .qr-card { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="shell" aria-label="VAC ClawCon networking card">
+      <div class="topline"></div>
+      <div class="card">
+        <div class="hero">
+          <div class="eyebrow">ClawCon contact card</div>
+          <h1>VAC</h1>
+          <p class="sub">Builder, operator, automation gremlin. If we talked at ClawCon, this is the clean path back.</p>
+        </div>
+
+        <nav class="links" aria-label="Social links">
+          <a class="link" href="https://www.linkedin.com/in/vito-a-cappello" rel="me noopener" target="_blank">
+            <span class="label"><span class="name">LinkedIn</span><span class="handle">Professional profile</span></span>
+            <span class="arrow">Open →</span>
+          </a>
+          <a class="link" href="https://x.com/HixVAC" rel="me noopener" target="_blank">
+            <span class="label"><span class="name">X / Twitter</span><span class="handle">Updates + projects</span></span>
+            <span class="arrow">Open →</span>
+          </a>
+          <a class="link" href="https://github.com/VACInc" rel="me noopener" target="_blank">
+            <span class="label"><span class="name">GitHub</span><span class="handle">Code + builds</span></span>
+            <span class="arrow">Open →</span>
+          </a>
+        </nav>
+
+        <section class="qr-card" aria-label="QR code for this page">
+          <img src="qr.svg" alt="QR code for connect.vacinc.us">
+          <div>
+            <div class="qr-title">Scan to reconnect</div>
+            <div class="qr-text">Clean URL, same links, zero hallway typing.</div>
+          </div>
+        </section>
+
+        <div class="footer">No app. No tracking. No networking-event QR-code tragedy.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
