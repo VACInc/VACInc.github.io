@@ -41,25 +41,27 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: .36;
+      opacity: .42;
       background:
-        linear-gradient(rgba(255,48,72,.08) 1px, transparent 1px),
+        linear-gradient(rgba(255,48,72,.10) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,48,72,.08) 1px, transparent 1px),
         repeating-linear-gradient(0deg, transparent 0 6px, rgba(255,255,255,.018) 6px 7px);
       background-size: 54px 54px, 54px 54px, auto;
       mask-image: radial-gradient(circle at top, black, transparent 78%);
+      animation: gridcrawl 14s linear infinite;
     }
     body::after {
       content: "";
       position: fixed;
       inset: -20%;
       pointer-events: none;
-      opacity: .12;
-      background: conic-gradient(from 170deg at 50% 50%, transparent, var(--red), transparent, var(--ember), transparent);
-      filter: blur(48px);
-      animation: drift 18s linear infinite;
+      opacity: .24;
+      background: conic-gradient(from 170deg at 50% 50%, transparent, var(--red), rgba(255,48,72,.55), transparent, var(--ember), transparent);
+      filter: blur(42px);
+      animation: drift 12s linear infinite;
     }
     @keyframes drift { to { transform: rotate(1turn); } }
+    @keyframes gridcrawl { to { background-position: 54px 54px, 54px 54px, 0 14px; } }
 
     .wrap {
       position: relative;
@@ -98,7 +100,7 @@
       overflow: hidden;
     }
     .hero::before {
-      content: "VAC";
+      content: "VACInc";
       position: absolute;
       right: -8px;
       bottom: -34px;
@@ -134,6 +136,14 @@
       letter-spacing: -.075em;
       text-transform: uppercase;
       text-shadow: 0 0 34px rgba(255,48,72,.20);
+    }
+    .realname {
+      position: relative;
+      margin-top: 10px;
+      color: var(--ember);
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 900;
+      letter-spacing: -.02em;
     }
     .sub {
       position: relative;
@@ -232,7 +242,8 @@
       <div class="card">
         <div class="hero">
           <div class="eyebrow">ClawCon contact card</div>
-          <h1>VAC</h1>
+          <h1>VACInc</h1>
+          <div class="realname">Vito Cappello</div>
           <p class="sub">Builder, operator, automation gremlin. If we talked at ClawCon, this is the clean path back.</p>
         </div>
 
