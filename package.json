@@ -1,0 +1,19 @@
+{
+  "name": "vacinc-github-io",
+  "private": true,
+  "description": "Static contact card served at https://vacinc.github.io/",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "lint:html": "html-validate index.html"
+  },
+  "devDependencies": {
+    "html-validate": "11.16.4",
+    "jsqr": "1.4.0",
+    "playwright": "1.63.0"
+  }
+}
