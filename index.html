@@ -223,6 +223,15 @@
       color: var(--ember);
     }
     .qr-text { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+
+    /* Respect the OS "reduce motion" setting: the drifting, blurred
+       background is purely decorative and can trigger vestibular symptoms.
+       Also saves battery/GPU on phones. */
+    @media (prefers-reduced-motion: reduce) {
+      body, body::before, body::after { animation: none; }
+      .link { transition: none; }
+      .link:hover, .link:focus-visible { transform: none; }
+    }
   </style>
 </head>
 <body>
