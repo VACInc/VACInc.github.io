@@ -6,15 +6,17 @@ Single-page contact card served by GitHub Pages at <https://vacinc.github.io/>.
 | ------------ | ----------------------------------------------------------- |
 | `index.html` | The whole site: markup and inline CSS. No JavaScript.       |
 | `qr.png`     | QR code that must encode `https://vacinc.github.io/`.       |
+| `favicon.svg`| Browser tab icon.                                           |
 | `test/`      | Browser and static checks run by CI (`npm test`).           |
 
 ## Editing
 
 - Change links and copy directly in `index.html`.
 - If the canonical URL changes (e.g. a custom domain), regenerate `qr.png`
-  **and** update its `alt` text and `SITE_URL` in `test/helpers.mjs` in the
-  same commit. The test suite decodes the QR and fails if any of the three
-  disagree, so a printed QR can never point somewhere stale.
+  **and** update its `alt` text, the `canonical`/`og:url` tags, and
+  `SITE_URL` in `test/helpers.mjs` in the same commit. The test suite decodes
+  the QR and fails if any of them disagree, so a printed QR can never point
+  somewhere stale.
 
 ## Running the checks locally
 
