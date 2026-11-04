@@ -113,6 +113,7 @@
     }
     .hero::before {
       content: "VAC";
+      content: "VAC" / ""; /* decorative: empty alt text keeps it out of screen readers */
       position: absolute;
       right: -8px;
       bottom: -34px;
@@ -189,7 +190,21 @@
       transform: translateX(3px);
       border-color: rgba(255,176,92,.52);
       background: rgba(255,48,72,.10);
-      outline: none;
+    }
+    .link:focus-visible {
+      outline: 2px solid var(--ember);
+      outline-offset: 3px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
     }
     .label { display: grid; gap: 2px; min-width: 0; }
     .name { font-size: 16px; }
@@ -252,16 +267,16 @@
 
         <nav class="links" aria-label="Social links">
           <a class="link" href="https://www.linkedin.com/in/vito-a-cappello" rel="me noopener" target="_blank">
-            <span class="label"><span class="name">LinkedIn</span></span>
-            <span class="arrow">→</span>
+            <span class="label"><span class="name">LinkedIn</span><span class="sr-only"> (opens in new tab)</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
           <a class="link" href="https://x.com/VACInc_" rel="me noopener" target="_blank">
-            <span class="label"><span class="name">X / Twitter</span></span>
-            <span class="arrow">→</span>
+            <span class="label"><span class="name">X / Twitter</span><span class="sr-only"> (opens in new tab)</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
           <a class="link" href="https://github.com/VACInc" rel="me noopener" target="_blank">
-            <span class="label"><span class="name">GitHub</span></span>
-            <span class="arrow">→</span>
+            <span class="label"><span class="name">GitHub</span><span class="sr-only"> (opens in new tab)</span></span>
+            <span class="arrow" aria-hidden="true">→</span>
           </a>
         </nav>
 
