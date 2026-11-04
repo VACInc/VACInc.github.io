@@ -233,6 +233,9 @@
       border-radius: 14px;
       background: #fff;
       padding: 9px;
+      /* qr.png is 132px and is upscaled; keep module edges hard instead of
+         smoothing them into grey, which makes scanning less reliable. */
+      image-rendering: pixelated;
     }
     .qr-title {
       font-weight: 950;
